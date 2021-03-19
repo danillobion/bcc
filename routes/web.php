@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,10 +13,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//nao logado
+Route::get('/', function () {
+    if(Auth::user() != null){
+        if(Auth::user()->tipo == 0){ //admin
+            return redirect()->route('admin.index');
+        }else if(Auth::user()->tipo == 1){ //convidado
+            return redirect()->route('convidado.index');
+        }
+    }else{ //não logado
+        return view('home');
+    }
+});
+//logado
+Route::group(['middleware' => 'auth'], function() {
+    //admin
+    Route::group(['middleware' => 'admin'], function() {
+        Route::get('/admin/home', [HomeController::class, 'indexAdmin'])->name('admin.index')->middleware('admin');
+    });
+    //convidado
+    Route::group(['middleware' => 'convidado'], function() {
+        Route::get('/convidado/home', [HomeController::class, 'indexConvidado'])->name('convidado.index')->middleware('convidado');
+    });
+});
