@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="container">DASHBOARD</div>
+                <div class="container">Lista de documentos criados</div>
             </div>
         </div>
     </div>

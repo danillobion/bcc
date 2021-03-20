@@ -18,27 +18,50 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white ">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <!--<a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
-                </a>
+                </a>-->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    Menu
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin:10px; margin-bottom:0px;margin-top:5px">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('n1.sobre') }}">{{ __('Sobre') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('n1.curso') }}">{{ __('Curso') }}</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/') }}">
+                                <img class="card-img-top" src="imagens/logo_ufape_bcc.png" alt="Card image cap" style="width:150px"> 
+                            </a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('n1.localizar') }}">{{ __('Localizar') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('n1.contato') }}">{{ __('Contato') }}</a>
+                        </li>
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
@@ -46,12 +69,23 @@
                                 </li>
                             @endif
                             
-                            @if (Route::has('register'))
+                            <!--@if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
-                            @endif
+                            @endif-->
                         @else
+                        <div class="container">
+                            <ul class="navbar-nav ">
+                                <li style="margin-left: 10px"><a href="{{ route('admin.index') }}">Dashboard</a></li>
+                                <li style="margin-left: 10px"><a href="{{ route('noticia.admin.index') }}">Notícias</a></li>
+                                <li style="margin-left: 10px"><a href="{{ route('projeto.admin.index') }}">Projetos</a></li>
+                                <li style="margin-left: 10px"><a href="{{ route('evento.admin.index') }}">Eventos</a></li>
+                                <li style="margin-left: 10px"><a href="{{ route('documento.admin.index') }}">Documentos</a></li>
+                                <li style="margin-left: 10px"><a href="{{ route('laboratorio.admin.index') }}">Laboratórios</a></li>
+                                <li style="margin-left: 10px"><a href="{{ route('grupoDePesquisa.admin.index') }}">Grupos de pesquisa</a></li>
+                            </ul>
+                        </div>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
@@ -74,6 +108,45 @@
                 </div>
             </div>
         </nav>
+
+        <div class="container" style="margin-top: 15px;">
+            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #E4E4E4; padding:10px;border-radius: 9px;border-color: rgb(255,102,203);" >
+                <div class="container">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar10">
+                        Menu
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse" id="navbar10">
+                        <ul class="navbar-nav nav-fill w-100">
+                            <li class="nav-item" style="color:#707070">
+                                <a class="nav-link" href="{{ route('nl.noticia') }}"  style="color:#707070">Notícias</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('nl.evento') }}"  style="color:#707070">Eventos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('nl.projeto') }}"  style="color:#707070">Projetos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('nl.professor') }}"  style="color:#707070">Professores</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('nl.laboratorio') }}"  style="color:#707070">Laboratórios</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('nl.documento') }}"  style="color:#707070">Documentos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"  style="color:#707070">Mídia</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('nl.grupodepesquisa') }}"  style="color:#707070">Grupos de Pesquisa</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
 
         <main class="py-4">
             @yield('content')
