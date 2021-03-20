@@ -46,6 +46,7 @@ Route::get('/sobre', function(){return view('sobre');})->name('n1.sobre');
 Route::get('/curso', function(){return view('curso');})->name('n1.curso');
 Route::get('/localizar', function(){return view('localizar');})->name('n1.localizar');
 Route::get('/contato', function(){return view('contato');})->name('n1.contato');
+
 //logado
 Route::group(['middleware' => 'auth'], function() {
     //admin
@@ -56,7 +57,7 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/admin/evento', [EventoController::class, 'indexAdmin'])->name('evento.admin.index')->middleware('admin');
         Route::get('/admin/documento', [DocumentoController::class, 'indexAdmin'])->name('documento.admin.index')->middleware('admin');
         Route::get('/admin/laboratorio', [LaboratorioController::class, 'indexAdmin'])->name('laboratorio.admin.index')->middleware('admin');
-        Route::get('/admin/grupos/pesquisa', [GrupoPesquisaController::class, 'index'])->name('grupoDePesquisa.admin.index')->middleware('admin');
+        Route::get('/admin/grupos/pesquisa', [GrupoPesquisaController::class, 'indexAdmin'])->name('grupoDePesquisa.admin.index')->middleware('admin');
     });
     //convidado
     Route::group(['middleware' => 'convidado'], function() {

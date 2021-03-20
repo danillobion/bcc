@@ -22,6 +22,7 @@
 </head>
 <body>
     <div id="app">
+        
         <nav class="navbar navbar-expand-md navbar-light bg-white ">
             <div class="container">
                 <!--<a class="navbar-brand" href="{{ url('/') }}">
@@ -48,7 +49,7 @@
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/') }}">
-                                <img class="card-img-top" src="imagens/logo_ufape_bcc.png" alt="Card image cap" style="width:150px"> 
+                                <img class="card-img-top" src="/imagens/logo_ufape_bcc.png" alt="Card image cap" style="width:150px"> 
                             </a>
                         </li>
                     </ul>
@@ -75,17 +76,6 @@
                                 </li>
                             @endif-->
                         @else
-                        <div class="container">
-                            <ul class="navbar-nav ">
-                                <li style="margin-left: 10px"><a href="{{ route('admin.index') }}">Dashboard</a></li>
-                                <li style="margin-left: 10px"><a href="{{ route('noticia.admin.index') }}">Notícias</a></li>
-                                <li style="margin-left: 10px"><a href="{{ route('projeto.admin.index') }}">Projetos</a></li>
-                                <li style="margin-left: 10px"><a href="{{ route('evento.admin.index') }}">Eventos</a></li>
-                                <li style="margin-left: 10px"><a href="{{ route('documento.admin.index') }}">Documentos</a></li>
-                                <li style="margin-left: 10px"><a href="{{ route('laboratorio.admin.index') }}">Laboratórios</a></li>
-                                <li style="margin-left: 10px"><a href="{{ route('grupoDePesquisa.admin.index') }}">Grupos de pesquisa</a></li>
-                            </ul>
-                        </div>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
@@ -103,6 +93,7 @@
                                     </form>
                                 </div>
                             </li>
+                            
                         @endguest
                     </ul>
                 </div>
@@ -110,7 +101,7 @@
         </nav>
 
         <div class="container" style="margin-top: 15px;">
-            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #E4E4E4; padding:10px;border-radius: 9px;border-color: rgb(255,102,203);" >
+            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #E4E4E4; padding:10px;border-radius: 9px;" >
                 <div class="container">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar10">
                         Menu
@@ -148,6 +139,33 @@
             </nav>
         </div>
 
+        @guest
+        @else
+        <div class="container" style="margin-top: 15px;">
+            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #8f8f8f; padding:10px;border-radius: 9px; ">
+                <div class="container">
+                    <div style="color: white; font-weight:600">Administrador do sistema: </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar110">
+                        Menu
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse" id="navbar110">
+                        <ul class="navbar-nav nav-fill w-100">
+                            <ul class="navbar-nav ">
+                                <li style="margin-left: 10px"><a href="{{ route('admin.index') }}"  style="color:#fff">Dashboard</a></li>
+                                <li style="margin-left: 10px"><a href="{{ route('noticia.admin.index') }}"  style="color:#fff">Notícias</a></li>
+                                <li style="margin-left: 10px"><a href="{{ route('projeto.admin.index') }}"  style="color:#fff">Projetos</a></li>
+                                <li style="margin-left: 10px"><a href="{{ route('evento.admin.index') }}"  style="color:#fff">Eventos</a></li>
+                                <li style="margin-left: 10px"><a href="{{ route('documento.admin.index') }}"  style="color:#fff">Documentos</a></li>
+                                <li style="margin-left: 10px"><a href="{{ route('laboratorio.admin.index') }}"  style="color:#fff">Laboratórios</a></li>
+                                <li style="margin-left: 10px"><a href="{{ route('grupoDePesquisa.admin.index') }}"  style="color:#fff">Grupos de pesquisa</a></li>
+                            </ul>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>   
+        @endguest
         <main class="py-4">
             @yield('content')
         </main>
