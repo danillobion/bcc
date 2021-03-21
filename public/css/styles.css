@@ -116,3 +116,18 @@
         margin: 0.3rem;
         margin-bottom: -0.55rem;
 }
+.style_container_menu_1{
+    display: block;
+}
+.style_container_menu_2{
+    display: none;
+}
+
+@media screen and (max-width: 991px) and (min-width: 0px){
+    .style_container_menu_1{
+        display: none;
+    }
+    .style_container_menu_2{
+        display: block;
+    }
+}
