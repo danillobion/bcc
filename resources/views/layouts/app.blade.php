@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script type="text/javascript" src="{{ URL::asset('js/sobre.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -40,7 +41,7 @@
                                 <a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('n1.sobre') }}">{{ __('Sobre') }}</a>
+                                <a class="nav-link" href="{{ route('nl.sobre') }}">{{ __('Sobre') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('n1.curso') }}">{{ __('Curso') }}</a>
@@ -156,7 +157,7 @@
                                     <a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('n1.sobre') }}">{{ __('Sobre') }}</a>
+                                    <a class="nav-link" href="{{ route('nl.sobre') }}">{{ __('Sobre') }}</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('n1.curso') }}">{{ __('Curso') }}</a>
@@ -244,6 +245,19 @@
                                 <li style="margin-left: 10px"><a href="{{ route('documento.admin.index') }}"  style="color:#fff">Documentos</a></li>
                                 <li style="margin-left: 10px"><a href="{{ route('laboratorio.admin.index') }}"  style="color:#fff">Laboratórios</a></li>
                                 <li style="margin-left: 10px"><a href="{{ route('grupoDePesquisa.admin.index') }}"  style="color:#fff">Grupos de pesquisa</a></li>
+                                <li style="margin-left: 10px">
+                                    <div class="dropdown">
+                                        <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#fff; cursor: pointer">
+                                          Configuração
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                          <a class="dropdown-item" href="{{ route('sobre.admin.index') }}">Sobre</a>
+                                          <a class="dropdown-item" href="#">Curso</a>
+                                          <a class="dropdown-item" href="#">Localizar</a>
+                                          <a class="dropdown-item" href="#">Contato</a>
+                                        </div>
+                                      </div>
+                                </li>
                             </ul>
                         </ul>
                     </div>
