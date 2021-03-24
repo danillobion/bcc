@@ -12,6 +12,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script type="text/javascript" src="{{ URL::asset('js/sobre.js') }}" defer></script>
+    <script type="text/javascript" src="{{ URL::asset('js/curso.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -252,7 +253,7 @@
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                           <a class="dropdown-item" href="{{ route('sobre.admin.index') }}">Sobre</a>
-                                          <a class="dropdown-item" href="#">Curso</a>
+                                          <a class="dropdown-item" href="{{ route('curso.admin.index') }}">Curso</a>
                                           <a class="dropdown-item" href="#">Localizar</a>
                                           <a class="dropdown-item" href="#">Contato</a>
                                         </div>

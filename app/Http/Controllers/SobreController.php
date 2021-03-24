@@ -22,9 +22,6 @@ class SobreController extends Controller
         return view('admin.sobre',['texto' => $resultado->texto]);
     }
     public function update(Request $request){
-        //verificar se o texto tá igual
-        //verificar se o texto tá em branco
-        //verificar se o texto atingiu o limite do campo de 10000 caractere
         $validator = $request->validate([
             'texto' => 'required'
         ]);

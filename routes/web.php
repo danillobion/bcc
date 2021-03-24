@@ -10,6 +10,7 @@ use App\Http\Controllers\LaboratorioController;
 use App\Http\Controllers\GrupoPesquisaController;
 use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\SobreController;
+use App\Http\Controllers\CursoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,7 +45,7 @@ Route::get('/documentos', [DocumentoController::class, 'index'])->name('nl.docum
 /*Route::get('/midia', [MidiaController::class, 'index'])->name('nl.projeto');*/
 Route::get('/grupo.de.pesquisa', [GrupoPesquisaController::class, 'index'])->name('nl.grupodepesquisa');
 Route::get('/sobre', [SobreController::class, 'index'])->name('nl.sobre');
-Route::get('/curso', function(){return view('curso');})->name('n1.curso');
+Route::get('/curso', [CursoController::class, 'index'])->name('n1.curso');
 Route::get('/localizar', function(){return view('localizar');})->name('n1.localizar');
 Route::get('/contato', function(){return view('contato');})->name('n1.contato');
 
@@ -62,6 +63,10 @@ Route::group(['middleware' => 'auth'], function() {
         //Sobre
         Route::get('/admin/sobre', [SobreController::class, 'indexAdmin'])->name('sobre.admin.index');
         Route::post('/admin/sobre/update', [SobreController::class, 'update'])->name('sobre.admin.update');
+        //Curso
+        Route::get('/admin/curso', [CursoController::class, 'indexAdmin'])->name('curso.admin.index');
+        Route::post('/admin/curso/update', [CursoController::class, 'update'])->name('curso.admin.update');
+
     });
     //convidado
     Route::group(['middleware' => 'convidado'], function() {
